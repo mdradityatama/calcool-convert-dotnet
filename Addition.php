@@ -1,9 +1,7 @@
 <?php 
 include 'Template/Header.php' ;
 
-$input1 = $_POST['input1'] ?? null;
-$input2 = $_POST['input2'] ?? null;
-
+require_once 'core/init.php';
 ?>
 
 <h1>Addition</h1>
@@ -33,10 +31,9 @@ $input2 = $_POST['input2'] ?? null;
     <label class="col-2">Result</label>
     <div id="result" class="col-10">
     <?php
-        if (isset($input1) || isset($input2)) 
+        if (Input::get('input1') || Input::get('input2')) 
         {
-            $total = $input1 + $input2;
-            echo $total;
+            echo SimpleCalculationsHelper::Add(Input::get('input1'), Input::get('input2'));
         }
         else 
         {
